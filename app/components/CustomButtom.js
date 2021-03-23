@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 const CustomButtom = ({ action, iconName, iconColor, title, bgColor }) => {
 
-    const { width } = Dimensions.get('window');
+    // const { width } = Dimensions.get('window');
 
     return (
         <Button
@@ -17,8 +17,9 @@ const CustomButtom = ({ action, iconName, iconColor, title, bgColor }) => {
                 borderColor: "transparent",
                 borderWidth: 0,
                 borderRadius: 5,
-                marginBottom: 5,                
-                width: width
+                marginBottom: 5,
+                width: "100%"               
+                // width: width
             }}
             title={title}
             icon={

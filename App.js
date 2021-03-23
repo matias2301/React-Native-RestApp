@@ -1,37 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
+import "react-native-gesture-handler";
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-import CustomButtom from './app/components/CustomButtom';
 import Preloader from './app/components/Preloader';
-import BackgroundImage from './app/components/BackgroundImage'
+
+import GuestNavigator from './app/navigations/guest';
+
 
 export default function App() {
 
   const loading = true;
 
   return (
-    <BackgroundImage
-      source={require('./assets/mainBg.png')}
-    >
+    <NavigationContainer>
       {
         loading
-        ?  
-          <>        
-            <Text>Open up App.js to start working on your app!</Text>
-
-            <CustomButtom
-              bgColor="rgba(220, 100, 20, 0.7)"
-              title="Custom Buttom"
-              action={() => console.log('test')}
-              iconName="sign-in"
-              iconSize={30}
-              iconColor="#fff"
-            />
-          </>                
+      ?  
+        <GuestNavigator />             
       :
         <Preloader />
-      }
-    </BackgroundImage>
+      }    
+    </NavigationContainer>
   );
 }
