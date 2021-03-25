@@ -1,5 +1,5 @@
 export default {
-    name: {required: {value: true, message: 'Name is required'}},
+    username: {required: {value: true, message: 'Name is required'}},
     email: {
       required: {value: true, message: 'Email is required'},
       pattern: {

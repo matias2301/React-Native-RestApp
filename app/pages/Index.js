@@ -12,7 +12,7 @@ const Index = ({ navigation }) => {
     }
 
     const register = () => {
-        
+        navigation.navigate('Register')
     }
 
     const gmail = () => {
@@ -52,7 +52,7 @@ const Index = ({ navigation }) => {
                     iconName="google"
                     iconSize={30}
                     iconColor="#fff"
-                />            
+                />
             </View>
         </BackgroundImage>
     )

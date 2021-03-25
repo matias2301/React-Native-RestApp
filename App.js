@@ -3,22 +3,29 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Preloader from './app/components/Preloader';
+import useAuth from './app/hooks/useAuth'
 
-import GuestNavigator from './app/navigations/guest';
+import GuestNavigation from './app/navigations/guest';
+import LoggedNavigation from './app/navigations/logged';
 
 
 export default function App() {
-
-  const loading = true;
+  
+  const { userLogged, loaded } = useAuth();
+  console.log('-------------------------------------------')
+  console.log(userLogged)
 
   return (
     <NavigationContainer>
       {
-        loading
+        !loaded
       ?  
-        <GuestNavigator />             
-      :
-        <Preloader />
+        <Preloader />             
+      : userLogged
+        ?
+        <LoggedNavigation />
+        :
+        <GuestNavigation />        
       }    
     </NavigationContainer>
   );

@@ -5,12 +5,14 @@ import { useController, useFormContext } from 'react-hook-form';
 import CustomInput from './CustomInput';
 
 const ControlledInput = props => {
-  const { name, rules, defaultValue = '', ...inputProps } = props;
+  const { name, index, rules, defaultValue = '', ...inputProps } = props;  
 
+  const Inputs = React.useRef([]);
+  
   const formContext = useFormContext();
-  const { control, errors } = formContext;
-
-  const { field } = useController({ name, control, rules, defaultValue });
+  const { control, errors } = formContext;  
+  
+  const { field } = useController({ name, control, rules, defaultValue });  
 
   return (
     <CustomInput
@@ -19,7 +21,17 @@ const ControlledInput = props => {
       error={errors[name]?.message}
       onChangeText={field.onChange}
       onBlur={field.onBlur}
+      blurOnSubmit={false}
       value={field.value}
+      ref={(e) => {
+        Inputs.current[index] = e
+      }}
+      onSubmitEditing={ () =>
+        {
+        Inputs.current[index + 1]
+          ? Inputs.current[index + 1].focus()
+          : Inputs.current[index].blur()
+      }}
     />
   )
 }

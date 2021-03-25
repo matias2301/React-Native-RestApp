@@ -24,21 +24,26 @@ const Error = styled.Text`
   color: ${COLORS.red};
 `
 
-const CustomInput = ({ label, error, ...textInputProps }) => {
-  const isError = Boolean(error)
+export default React.forwardRef(
+  (props, ref) => {
+    const { label, error, ...textInputProps } = props;
+      const isError = Boolean(error)      
+    
+    return (
+      <Wrapper>
+        {Boolean(label) && <Label>{label}</Label>}
+        <StyledInput
+          {...textInputProps}
+          ref={ref}
+          isError={isError}          
+        />
+        {isError && <Error>{error}</Error>}
+      </Wrapper>
+    )
+  }  
+);
 
-  return (
-    <Wrapper>
-      {Boolean(label) && <Label>{label}</Label>}
-      <StyledInput isError={isError} {...textInputProps} />
-      {isError && <Error>{error}</Error>}
-    </Wrapper>
-  )
-}
-
-CustomInput.propTypes = {
-  label: PropTypes.string,
-  error: PropTypes.string,
-}
-
-export default CustomInput
+// CustomInput.propTypes = {
+//   label: PropTypes.string,
+//   error: PropTypes.string,
+// }

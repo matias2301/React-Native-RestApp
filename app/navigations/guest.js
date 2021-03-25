@@ -5,6 +5,7 @@ import {
 } from "@react-navigation/stack";
 import IndexScreen from '../pages/Index';
 import LoginScreen from '../pages/Login';
+import RegisterScreen from '../pages/Register';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function GuestNavigator() {
     >
       <Stack.Screen name="Index" component={IndexScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }
